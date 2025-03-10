@@ -207,4 +207,4 @@ volumes:
   librenms: {}
   db: {}
   influxdb: {}
-  rrd:
+  rrd: {}
