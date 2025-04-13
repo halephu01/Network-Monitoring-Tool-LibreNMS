@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "grafana-storage:/var/lib/grafana"
+      - "./grafana-storage:/var/lib/grafana"
     environment:
       - "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}"
     restart: always
@@ -17,7 +17,7 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - "influxdb:/var/lib/influxdb2"
+      - "./influxdb:/var/lib/influxdb2"
     environment:
       - "DOCKER_INFLUXDB_INIT_MODE=setup"
       - "DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}"
@@ -36,7 +36,7 @@ services:
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_unicode_ci"
     volumes:
-      - "db:/var/lib/mysql"
+      - "./db:/var/lib/mysql"
     environment:
       - "TZ=${TZ}"
       - "MARIADB_RANDOM_ROOT_PASSWORD=yes"
@@ -93,7 +93,7 @@ services:
       - msmtpd
       - rrdcached
     volumes:
-      - "librenms:/data"
+      - "./librenms:/data"
     env_file:
       - "./librenms.env"
     environment:
@@ -118,7 +118,7 @@ services:
       - librenms
       - redis
     volumes:
-      - "librenms:/data"
+      - "./librenms:/data"
     env_file:
       - "./librenms.env"
     environment:
@@ -152,7 +152,7 @@ services:
         published: 514
         protocol: udp
     volumes:
-      - "librenms:/data"
+      - "./librenms:/data"
     env_file:
       - "./librenms.env"
     environment:
@@ -185,7 +185,7 @@ services:
         published: 162
         protocol: udp
     volumes:
-      - "librenms:/data"
+      - "./librenms:/data"
     env_file:
       - "./librenms.env"
     environment:
